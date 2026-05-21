@@ -6,6 +6,7 @@ import DetailsPage from "./pages/DetailsPage";
 import WishlistPage from "./pages/WishlistPage";
 import ComparePage from "./pages/ComparePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import OurServicesPage from "./pages/OurServices";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
       { path: "cars/:id", Component: DetailsPage },
       { path: "wishlist", Component: WishlistPage },
       { path: "compare", Component: ComparePage },
+      { path: "our-services", Component: OurServicesPage },
       { path: "*", Component: NotFoundPage },
     ],
   },

@@ -5,6 +5,92 @@ import { SlidersHorizontal, X, ChevronDown, Search } from 'lucide-react';
 import { cars, brands, fuelTypes, transmissions } from '../data/cars';
 import CarCard from '../components/CarCard';
 
+// ─── Hover Angle Card Wrapper ─────────────────────────────────────────────────
+// Cycles through multiple image angles when hovered.
+// Expects car.images to be an array; falls back to [car.image] if not.
+const HoverAngleCard = ({ car, index }) => {
+  const [angleIndex, setAngleIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const intervalRef = useRef(null);
+
+  // Normalise images: prefer car.images[], else wrap car.image in array
+  const images = useMemo(() => {
+    if (Array.isArray(car.images) && car.images.length > 1) return car.images;
+    if (car.image) return [car.image];
+    return [];
+  }, [car]);
+
+  const hasMultipleAngles = images.length > 1;
+
+  const startCycling = useCallback(() => {
+    if (!hasMultipleAngles) return;
+    setIsHovered(true);
+    setAngleIndex(1); // jump to second angle immediately
+    intervalRef.current = setInterval(() => {
+      setAngleIndex(prev => (prev + 1) % images.length);
+    }, 700);
+  }, [hasMultipleAngles, images.length]);
+
+  const stopCycling = useCallback(() => {
+    setIsHovered(false);
+    clearInterval(intervalRef.current);
+    setAngleIndex(0);
+  }, []);
+
+  useEffect(() => () => clearInterval(intervalRef.current), []);
+
+  // Clone car with overridden image for the current angle
+  const carWithAngle = useMemo(() => ({
+    ...car,
+    image: images[angleIndex] ?? car.image,
+  }), [car, images, angleIndex]);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={startCycling}
+      onMouseLeave={stopCycling}
+    >
+      <CarCard car={carWithAngle} index={index} />
+
+      {/* Angle indicator dots */}
+      {hasMultipleAngles && (
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 pointer-events-none">
+          {images.map((_, i) => (
+            <motion.div
+              key={i}
+              animate={{
+                width: i === angleIndex ? 16 : 6,
+                opacity: isHovered ? 1 : i === 0 ? 0.4 : 0,
+                backgroundColor: i === angleIndex ? '#a855f7' : 'rgba(255,255,255,0.5)',
+              }}
+              transition={{ duration: 0.2 }}
+              className="h-1.5 rounded-full"
+            />
+          ))}
+        </div>
+      )}
+
+      {/* "360°" badge on hover */}
+      {hasMultipleAngles && (
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              key="badge"
+              initial={{ opacity: 0, scale: 0.8, y: -4 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: -4 }}
+              transition={{ duration: 0.15 }}
+              className="absolute top-3 right-3 z-10 bg-purple-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded-full tracking-wider pointer-events-none"
+            >
+              {angleIndex + 1}/{images.length}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
+    </div>
+  );
+};
 
 // ─── Pill filter button ───────────────────────────────────────────────────────
 const FilterPill = ({
@@ -267,7 +353,6 @@ const ListingPage = () => {
               />
             ))}
 
-            
             {/* Clear */}
             {activeFilterCount > 0 && (
               <motion.button
@@ -343,10 +428,11 @@ const ListingPage = () => {
           <motion.div
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+            className="grid gap-4 sm:gap-6"
+            style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}
           >
             {filteredAndSortedCars.map((car, index) => (
-              <CarCard key={car.id} car={car} index={index} />
+              <HoverAngleCard key={car.id} car={car} index={index} />
             ))}
           </motion.div>
         ) : (
