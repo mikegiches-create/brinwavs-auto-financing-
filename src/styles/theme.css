@@ -1,0 +1,164 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+/* Custom utility classes */
+.text-foreground {
+  color: var(--foreground);
+}
+
+.text-muted-foreground {
+  color: var(--muted-foreground);
+}
+
+.bg-background {
+  background-color: var(--background);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-sans {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ef4444 0%, #a855f7 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mesh-gradient {
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(239, 68, 68, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.3) 0%, transparent 50%);
+}
+
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.text-responsive-xl {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+@layer utilities {
+  .container-responsive {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .container-responsive {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container-responsive {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .hidden-mobile {
+      display: block;
+    }
+  }
+
+  .show-mobile {
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    .show-mobile {
+      display: none;
+    }
+  }
+
+  .hidden-desktop {
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    .hidden-desktop {
+      display: none;
+    }
+  }
+
+  .show-desktop {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .show-desktop {
+      display: block;
+    }
+  }
+
+  .flex-responsive {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 768px) {
+    .flex-responsive {
+      flex-direction: row;
+    }
+  }
+
+  .mobile-padding {
+    padding: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .mobile-padding {
+      padding: 2rem;
+    }
+  }
+
+  .mobile-margin {
+    margin: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .mobile-margin {
+      margin: 2rem;
+    }
+  }
+}
