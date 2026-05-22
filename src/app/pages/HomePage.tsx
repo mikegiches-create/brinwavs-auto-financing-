@@ -183,18 +183,18 @@ const HomePage = () => {
 
       {/* Featured Cars */}
       <section id="featured-cars" className="relative py-24">
-        <div className="w-full px-4 sm:px-6 lg:px-12">
+        <div className="w-full px-3 sm:px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 sm:mb-16"
           >
-            <h2 className="font-display text-white mb-4" style={{ fontSize: 'clamp(3rem, 7vw, 5rem)' }}>
+            <h2 className="font-display text-white mb-4" style={{ fontSize: 'clamp(2rem, 7vw, 5rem)' }}>
               Featured <span className="gradient-text">Collection</span>
             </h2>
-            <p className="text-white/60 max-w-2xl mx-auto text-lg">
+            <p className="text-white/60 max-w-2xl mx-auto text-base sm:text-lg">
               Handpicked masterpieces that define automotive perfection
             </p>
           </motion.div>
@@ -204,7 +204,8 @@ const HomePage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            // ── 2 cols on mobile → 2 on md → 3 on lg → 4 on xl ──────────
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-6"
           >
             {displayCars.map((car, index) => (
               <LazyCarCard key={car.id} car={car} index={index} />
@@ -216,16 +217,16 @@ const HomePage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            className="text-center mt-12"
+            className="text-center mt-10 sm:mt-12"
           >
             <Link to="/cars">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 px-8 py-4 rounded-full text-white font-medium inline-flex items-center space-x-2 hover:shadow-2xl hover:shadow-purple-500/50 transition-all"
+                className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-white font-medium inline-flex items-center space-x-2 hover:shadow-2xl hover:shadow-purple-500/50 transition-all text-sm sm:text-base"
               >
                 <span>View All Vehicles</span>
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </motion.button>
             </Link>
           </motion.div>
@@ -244,7 +245,7 @@ const HomePage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-white mb-4" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
+            <h2 className="font-display text-white mb-4" style={{ fontSize: 'clamp(1.6rem, 6vw, 4rem)' }}>
               Why Choose <span className="gradient-text">BRINWAVSCAR IMPORTS</span>
             </h2>
           </motion.div>
@@ -254,7 +255,8 @@ const HomePage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            // ── 2 cols on mobile → 2 on md → 4 on lg ────────────────────
+            className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8"
           >
             {[
               {
@@ -285,15 +287,15 @@ const HomePage = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="glass rounded-2xl p-8 hover:bg-white/10 transition-all duration-500 group"
+                className="glass rounded-2xl p-4 sm:p-8 hover:bg-white/10 transition-all duration-500 group"
               >
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} p-[2px] mb-6`}>
-                  <div className="w-full h-full rounded-2xl bg-[#0A0A0F] flex items-center justify-center group-hover:bg-transparent transition-colors">
-                    <feature.icon className="w-7 h-7 text-white" />
+                <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${feature.gradient} p-[2px] mb-4 sm:mb-6`}>
+                  <div className="w-full h-full rounded-xl sm:rounded-2xl bg-[#0A0A0F] flex items-center justify-center group-hover:bg-transparent transition-colors">
+                    <feature.icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                   </div>
                 </div>
-                <h3 className="font-display text-xl text-white mb-3">{feature.title}</h3>
-                <p className="text-white/60 leading-relaxed">{feature.description}</p>
+                <h3 className="font-display text-sm sm:text-xl text-white mb-1.5 sm:mb-3 leading-tight">{feature.title}</h3>
+                <p className="text-white/60 leading-relaxed text-xs sm:text-base">{feature.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -313,10 +315,10 @@ const HomePage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display text-white mb-6" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)' }}>
+            <h2 className="font-display text-white mb-6" style={{ fontSize: 'clamp(1.8rem, 6vw, 4rem)' }}>
               Ready to Start Your <span className="gradient-text">Journey?</span>
             </h2>
-            <p className="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
+            <p className="text-white/70 text-base sm:text-lg mb-10 max-w-2xl mx-auto">
               At BrinWavscar Imports, we don't just sell cars—we deliver trust, quality, and peace of mind.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
