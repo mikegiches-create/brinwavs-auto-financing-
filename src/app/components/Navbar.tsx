@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Heart, GitCompare, Menu, X, ChevronDown, BookOpen, Calculator, FileText } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { useCarContext } from '../context/CarContext';
+import logoImage from '../../assets/images/logo brinwavs auto financing.jpg';
 
 // ── Services submenu data ─────────────────────────────────────────────────────
 const serviceItems = [
@@ -139,10 +140,10 @@ const Navbar = () => {
 
   // Regular nav links (Services handled separately)
   const navLinks = [
-    { name: 'Home',     path: '/' },
-    { name: 'Cars',     path: '/cars', action: scrollToFeaturedCars },
+    { name: 'Home', path: '/' },
+    { name: 'Cars', path: '/cars', action: scrollToFeaturedCars },
     { name: 'Wishlist', path: '/wishlist' },
-    { name: 'Compare',  path: '/compare' },
+    { name: 'Compare', path: '/compare' },
   ];
 
   const isServicesActive = location.pathname === '/our-services';
@@ -157,22 +158,26 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
 
+
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <motion.div
-              whileHover={{ rotate: 180 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 via-purple-500 to-blue-500 p-[2px]"
-            >
-              <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                <span className="text-white text-lg">B</span>
-              </div>
-            </motion.div>
-            <span className="text-white text-xl tracking-tight hidden sm:block">
-              BRINWAVSCAR IMPORTS
-            </span>
+            <motion.img
+              src={logoImage}
+              alt="BRINWAVSCAR IMPORTS Logo"
+              className="w-38 h-38 object-contain"
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            />
+            {/* Typography Block */}
+            <div className="flex flex-col justify-center">
+              <span className="text-white font-black text-2xl tracking-wider uppercase transition-colors duration-200 group-hover:text-purple-400">
+                Brinwavscar
+              </span>
+              <span className="text-zinc-400 font-bold text-sm tracking-[0.22em] uppercase">
+                Imports
+              </span>
+            </div>
           </Link>
-
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => {
@@ -303,9 +308,8 @@ const Navbar = () => {
                     <button
                       key={link.path}
                       onClick={() => { link.action(); setMobileMenuOpen(false); }}
-                      className={`block w-full text-left py-3 px-4 text-base rounded-xl transition-colors min-h-[44px] bg-transparent border-none cursor-pointer ${
-                        isActive ? 'text-white bg-white/15' : 'text-gray-400 hover:text-white hover:bg-white/8'
-                      }`}
+                      className={`block w-full text-left py-3 px-4 text-base rounded-xl transition-colors min-h-[44px] bg-transparent border-none cursor-pointer ${isActive ? 'text-white bg-white/15' : 'text-gray-400 hover:text-white hover:bg-white/8'
+                        }`}
                     >
                       {link.name}
                     </button>
@@ -316,9 +320,8 @@ const Navbar = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`block py-3 px-4 text-base rounded-xl transition-colors min-h-[44px] ${
-                      isActive ? 'text-white bg-white/15' : 'text-gray-400 hover:text-white hover:bg-white/8'
-                    }`}
+                    className={`block py-3 px-4 text-base rounded-xl transition-colors min-h-[44px] ${isActive ? 'text-white bg-white/15' : 'text-gray-400 hover:text-white hover:bg-white/8'
+                      }`}
                   >
                     {link.name}
                   </Link>
@@ -329,9 +332,8 @@ const Navbar = () => {
               <div className="rounded-xl overflow-hidden border border-white/8">
                 <button
                   onClick={() => setMobileServicesOpen(v => !v)}
-                  className={`w-full flex items-center justify-between py-3 px-4 text-base transition-colors min-h-[44px] ${
-                    isServicesActive ? 'text-white bg-white/15' : 'text-gray-400 hover:text-white hover:bg-white/8'
-                  }`}
+                  className={`w-full flex items-center justify-between py-3 px-4 text-base transition-colors min-h-[44px] ${isServicesActive ? 'text-white bg-white/15' : 'text-gray-400 hover:text-white hover:bg-white/8'
+                    }`}
                 >
                   <span>Our Services</span>
                   <ChevronDown
@@ -390,3 +392,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

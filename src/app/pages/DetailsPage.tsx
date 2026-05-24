@@ -117,7 +117,7 @@ const DetailsPage = () => {
 
             {/* WhatsApp Button */}
             <motion.a
-              href={`https://wa.me/254702727274?text=${encodeURIComponent(`Hello 👋\nThank you for contacting Brinwavscar Imports 🚗\n\nI am interested in the ${car.name} (${car.brand} ${car.year}).\n\nKindly share more details about this vehicle including pricing and availability.\nWe look forward to assisting you.`)}`}
+              href={`https://wa.me/254724098493?text=${encodeURIComponent(`Hello 👋\nThank you for contacting Brinwavscar Imports 🚗\n\nI am interested in the ${car.name} (${car.brand} ${car.year}).\n\nKindly share more details about this vehicle including pricing and availability.\nWe look forward to assisting you.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
