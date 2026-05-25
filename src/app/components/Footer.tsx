@@ -11,11 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 via-purple-500 to-blue-500 p-[2px]">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                  <span className="text-white font-serif text-lg">B</span>
-                </div>
-              </div>
+              
               <span className="font-display text-xl tracking-tight text-white">BRINWAVSCAR IMPORTS</span>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-6">

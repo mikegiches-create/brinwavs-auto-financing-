@@ -323,7 +323,7 @@ const HomePage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href={`https://wa.me/254702727274?text=${encodeURIComponent("Hello 👋\nThank you for contacting Brinwavscar Imports 🚗\n\nKindly share your preferred car model, budget, and any key specifications.\nWe'll respond promptly with suitable options.\n\nWe look forward to assisting you.")}`}
+                href={`https://wa.me/254724098493?text=${encodeURIComponent("Hello 👋\nThank you for contacting Brinwavscar Imports 🚗\n\nKindly share your preferred car model, budget, and any key specifications.\nWe'll respond promptly with suitable options.\n\nWe look forward to assisting you.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -342,7 +342,7 @@ const HomePage = () => {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href={`https://wa.me/254702727274?text=${encodeURIComponent("Hello \nThank you for contacting Brinwavscar Imports \n\nKindly share your preferred car model, budget, and any key specifications.\nWe'll respond promptly with suitable options.\n\nWe look forward to assisting you.")}`}
+        href={`https://wa.me/254724098493?text=${encodeURIComponent("Hello \nThank you for contacting Brinwavscar Imports \n\nKindly share your preferred car model, budget, and any key specifications.\nWe'll respond promptly with suitable options.\n\nWe look forward to assisting you.")}`}
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, scale: 0 }}
